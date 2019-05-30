@@ -1,12 +1,12 @@
 # skadmin-vue
 
-sk-admin 前端源码
+skadmin 前端源码
 
 #### 项目源码
 
 |     |   后端源码  |   前端源码  |
 |---  |--- | --- |
-|  github   |  https://github.com/DengSinkiang/sk-admin   |  https://github.com/DengSinkiang/skadmin-vue   |
+|  github   |  https://github.com/DengSinkiang/skadmin   |  https://github.com/DengSinkiang/skadmin-vue   |
 
 #### 前端模板
 
