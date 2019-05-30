@@ -25,3 +25,38 @@ npm run dev
 # 构建生产环境
 npm run build
 ```
+```
+# nginx 
+server {
+    listen       80;
+    server_name  前端页面;
+
+    proxy_set_header X-Forwarded-Host $host;
+    proxy_set_header X-Forwarded-Server $host;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+    location / {
+        proxy_pass http://127.0.0.1:8013;
+        proxy_connect_timeout 600;
+        proxy_read_timeout 600;
+    }
+
+}
+server {
+    listen       80;
+    server_name  api页面;
+
+    proxy_set_header X-Forwarded-Host $host;
+    proxy_set_header X-Forwarded-Server $host;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+    location / {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_connect_timeout 600;
+        proxy_read_timeout 600;
+    }
+
+}
+# 修改 prod.env.js
+BASE_API: '"api地址"'
+```
