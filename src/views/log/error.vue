@@ -37,6 +37,7 @@
 <script>
 import initData from '@/mixins/initData'
 import { parseTime } from '@/utils/index'
+import { getErrDetail } from '@/api/log'
 import eHeader from './module/header'
 export default {
   components: { eHeader },
@@ -64,9 +65,11 @@ export default {
       if (logType !== '' && logType !== null) { this.params['logType'] = logType }
       return true
     },
-    info(errorInfo) {
-      this.errorInfo = errorInfo
+    info(id) {
       this.dialog = true
+      getErrDetail(id).then(res => {
+        this.errorInfo = res.exception
+      })
     }
   }
 }
