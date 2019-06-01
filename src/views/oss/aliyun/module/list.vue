@@ -55,7 +55,7 @@
 <script>
 import checkPermission from '@/utils/permission' // 权限判断函数
 import initData from '@/mixins/initData'
-import { del, download } from '@/api/qiniu'
+import { del, download } from '@/api/aliyun'
 import { parseTime } from '@/utils/index'
 import eHeader from './module/header'
 export default {

@@ -15,7 +15,7 @@
       </el-table-column>
       <el-table-column prop="createTime" label="异常详情" width="100px">
         <template slot-scope="scope">
-          <el-button size="mini" type="text" @click="info(scope.row.exceptionDetail)">查看详情</el-button>
+          <el-button size="mini" type="text" @click="info(scope.row.id)">查看详情</el-button>
         </template>
       </el-table-column>
     </el-table>

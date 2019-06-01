@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import { get, update } from '@/api/qiniu'
+import { get, update } from '@/api/tencent'
 export default {
   name: 'Config',
   data() {

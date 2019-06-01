@@ -20,7 +20,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { del } from '@/api/qiniu'
+import { del } from '@/api/aliyun'
 import { getToken } from '@/utils/auth'
 export default {
   data() {

@@ -20,7 +20,7 @@
 
 <script>
 import eForm from './form'
-import { sync } from '@/api/qiniu'
+import { sync } from '@/api/tencent'
 // 查询条件
 export default {
   components: { eForm },
