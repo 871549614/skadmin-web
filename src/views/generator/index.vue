@@ -8,8 +8,8 @@
           <div>{{ scope.$index + 1 }}</div>
         </template>
       </el-table-column>
-      <el-table-column :show-overflow-tooltip="true" prop="tableName" label="表名" align="center"/>
-      <el-table-column prop="createTime" label="创建日期" align="center">
+      <el-table-column :show-overflow-tooltip="true" prop="tableName" label="表名"/>
+      <el-table-column prop="createTime" label="创建日期">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.createTime) }}</span>
         </template>

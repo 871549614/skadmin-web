@@ -86,7 +86,7 @@ export default {
       this.genLoading = true
       generator(this.data, this.name).then(res => {
         this.$notify({
-          title: '生成成功',
+          title: '生成代码成功',
           type: 'success',
           duration: 2500
         })
