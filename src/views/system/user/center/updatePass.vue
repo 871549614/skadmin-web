@@ -23,6 +23,7 @@
 <script>
 import store from '@/store'
 import { validPass, updatePass } from '@/api/user'
+import Cookies from 'js-cookie'
 export default {
   data() {
     const validatePass = (rule, value, callback) => {
@@ -78,6 +79,9 @@ export default {
             })
             setTimeout(() => {
               store.dispatch('LogOut').then(() => {
+                Cookies.remove('username')
+                Cookies.remove('password')
+                Cookies.remove('rememberMe')
                 location.reload() // 为了重新实例化vue-router对象 避免bug
               })
             }, 1500)
