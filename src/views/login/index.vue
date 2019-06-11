@@ -26,10 +26,12 @@
 <script>
 import Config from '@/config'
 import Cookies from 'js-cookie'
+import CryptoJS from 'crypto-js'
 export default {
   name: 'Login',
   data() {
     return {
+      enpass: '',
       loginForm: {
         username: '',
         password: '',
@@ -55,21 +57,23 @@ export default {
     this.getCookie()
   },
   methods: {
-    getCookie() {
+    getCookie: function() {
       const username = Cookies.get('username')
-      let password = Cookies.get('password')
+      const password = Cookies.get('password')
       const rememberMe = Cookies.get('rememberMe')
       // 保存cookie里面的加密后的密码
-      password = password === undefined ? '' : password
+      this.enpass = password === undefined ? '' : password
       this.loginForm = {
         username: username === undefined ? '' : username,
-        password: password,
+        password: this.enpass,
         rememberMe: rememberMe === undefined ? false : Boolean(rememberMe)
       }
     },
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
-        const user = this.loginForm
+        let pass = this.loginForm.password
+        if (pass !== this.enpass) { pass = CryptoJS.AES.encrypt(pass, 'sinkiang').toString() }
+        const user = { username: this.loginForm.username, password: pass, rememberMe: this.loginForm.rememberMe }
         if (valid) {
           this.loading = true
           if (user.rememberMe) {
