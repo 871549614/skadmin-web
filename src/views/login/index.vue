@@ -26,7 +26,7 @@
 <script>
 import Config from '@/config'
 import Cookies from 'js-cookie'
-import CryptoJS from 'crypto-js'
+import md5 from 'js-md5'
 export default {
   name: 'Login',
   data() {
@@ -72,7 +72,7 @@ export default {
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
         let pass = this.loginForm.password
-        if (pass !== this.enpass) { pass = CryptoJS.AES.encrypt(pass, 'sinkiang').toString() }
+        if (pass !== this.enpass) { pass = md5(pass) }
         const user = { username: this.loginForm.username, password: pass, rememberMe: this.loginForm.rememberMe }
         if (valid) {
           this.loading = true
