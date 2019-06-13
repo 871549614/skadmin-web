@@ -22,14 +22,14 @@ npm install
 # 启动服务 localhost:8013
 npm run dev
 
-# 构建生产环境
+# 构建生产环境(生产环境打包，所以这条命令不用执行)
 npm run build
 ```
 ```
-# nginx 
+# nginx 没有安装nginx请自行百度安装
 server {
     listen       80;
-    server_name  前端页面;
+    server_name  前端页面 # www.rbac.com;
 
     proxy_set_header X-Forwarded-Host $host;
     proxy_set_header X-Forwarded-Server $host;
@@ -44,7 +44,7 @@ server {
 }
 server {
     listen       80;
-    server_name  api页面;
+    server_name  api页面 # api.rbac.com;
 
     proxy_set_header X-Forwarded-Host $host;
     proxy_set_header X-Forwarded-Server $host;
@@ -58,5 +58,5 @@ server {
 
 }
 # 修改 prod.env.js
-BASE_API: '"api地址"'
+BASE_API: '"api地址 # http://api.rbac.com"'
 ```
