@@ -26,12 +26,10 @@
 <script>
 import Config from '@/config'
 import Cookies from 'js-cookie'
-import md5 from 'js-md5'
 export default {
   name: 'Login',
   data() {
     return {
-      enpass: '',
       loginForm: {
         username: '',
         password: '',
@@ -57,23 +55,21 @@ export default {
     this.getCookie()
   },
   methods: {
-    getCookie: function() {
+    getCookie() {
       const username = Cookies.get('username')
-      const password = Cookies.get('password')
+      let password = Cookies.get('password')
       const rememberMe = Cookies.get('rememberMe')
-      // 保存cookie里面的加密后的密码
-      this.enpass = password === undefined ? '' : password
+      password = password === undefined ? this.loginForm.password : password
       this.loginForm = {
-        username: username === undefined ? '' : username,
-        password: this.enpass,
-        rememberMe: rememberMe === undefined ? false : Boolean(rememberMe)
+        username: username === undefined ? this.loginForm.username : username,
+        password: password,
+        rememberMe: rememberMe === undefined ? false : Boolean(rememberMe),
+        code: ''
       }
     },
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
-        let pass = this.loginForm.password
-        if (pass !== this.enpass) { pass = md5(pass) }
-        const user = { username: this.loginForm.username, password: pass, rememberMe: this.loginForm.rememberMe }
+        const user = this.loginForm
         if (valid) {
           this.loading = true
           if (user.rememberMe) {
