@@ -89,7 +89,7 @@ export default {
     parseTime,
     checkPermission,
     beforeInit() {
-      this.url = 'api/qiNiuContent'
+      this.url = 'api/aliYunContent'
       const sort = 'id,desc'
       const query = this.query
       const value = query.value
