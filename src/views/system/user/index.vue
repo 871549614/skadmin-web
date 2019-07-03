@@ -12,9 +12,9 @@
         <!--表格渲染-->
         <el-table v-loading="loading" :data="data" size="small" style="width: 100%;">
           <el-table-column prop="username" label="用户名"/>
-          <el-table-column prop="phone" label="电话"/>
-          <el-table-column :show-overflow-tooltip="true" prop="email" label="邮箱"/>
-          <el-table-column label="部门 / 岗位">
+          <el-table-column prop="phone" label="电话" align="center"/>
+          <el-table-column :show-overflow-tooltip="true" prop="email" label="邮箱" align="center"/>
+          <el-table-column label="部门 / 岗位" align="center">
             <template slot-scope="scope">
               <div>{{ scope.row.dept.name }} / {{ scope.row.job.name }}</div>
             </template>
