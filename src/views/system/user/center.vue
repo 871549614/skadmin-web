@@ -1,7 +1,8 @@
 <template>
   <div class="app-container">
     <el-row :gutter="20">
-      <el-col :xs="24" :sm="24" :md="8" :lg="6" :xl="5">
+      <!--修改lg可以改变卡片宽度-->
+      <el-col :xs="24" :sm="24" :md="8" :lg="7" :xl="5">
         <el-card class="box-card">
           <div slot="header" class="clearfix">
             <span>个人信息</span>
@@ -36,7 +37,8 @@
           </div>
         </el-card>
       </el-col>
-      <el-col :xs="24" :sm="24" :md="16" :lg="18" :xl="19">
+      <!--修改lg可以改变卡片宽度-->
+      <el-col :xs="24" :sm="24" :md="16" :lg="17" :xl="19">
         <el-card class="box-card">
           <div slot="header" class="clearfix">
             <span>操作日志</span>
@@ -129,12 +131,12 @@ export default {
     border-radius: 50%
   }
   .user-info {
-    padding-left: 0px;
+    padding-left: 0;
     list-style: none;
     li{
       border-bottom: 1px solid #F0F3F4;
       border-top: 1px solid #F0F3F4;
-      padding: 11px 0px;
+      padding: 11px 0;
       font-size: 13px;
     }
     .user-right {
