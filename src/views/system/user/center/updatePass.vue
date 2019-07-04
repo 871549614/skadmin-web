@@ -29,7 +29,7 @@ export default {
     const validatePass = (rule, value, callback) => {
       if (value) {
         validPass(value).then(res => {
-          if (res.status === 200) {
+          if (res.code === 200) {
             callback()
           } else {
             callback(new Error('旧密码错误，请检查'))
