@@ -42,6 +42,7 @@
 import initData from '@/mixins/initData'
 import { parseTime } from '@/utils/index'
 import eHeader from './module/header'
+
 export default {
   components: { eHeader },
   mixins: [initData],
@@ -53,12 +54,25 @@ export default {
   methods: {
     parseTime,
     beforeInit() {
-      this.url = 'api/logs/login'
+      this.url = 'api/log/login'
       const sort = 'id,desc'
       const query = this.query
       const username = query.username
+      const daterange = query.daterange
       this.params = { page: this.page, size: this.size, sort: sort }
       if (username && username) { this.params['username'] = username }
+
+      /**
+       * @return {string}
+       */
+      function GMTToStr(time) {
+        const date = new Date(time)
+        return date.getFullYear() + '-' +
+          (date.getMonth() + 1).toString().padStart(2, 0) + '-' +
+          date.getDate().toString().padStart(2, 0)
+      }
+
+      if (daterange && daterange) { this.params['startTime'] = GMTToStr(daterange[0]); this.params['endTime'] = GMTToStr(daterange[1]) }
       return true
     }
   }

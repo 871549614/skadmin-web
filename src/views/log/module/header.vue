@@ -1,7 +1,7 @@
 <template>
   <div class="head-container">
     <el-input v-model="query.username" clearable placeholder="用户名" style="width: 200px;" class="filter-item" size="small" @keyup.enter.native="toQuery"/>
-    <el-date-picker v-model="value" :picker-options="pickerOptions2" type="daterange" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期" size="small" style="width: 370px;" class="filter-item"/>
+    <el-date-picker v-model="query.daterange" :picker-options="pickerOptions2" class="filter-item" style="width: 370px;" size="small" type="daterange" unlink-panels range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期"/>
     <el-button class="filter-item" size="small" type="success" icon="el-icon-search" @click="toQuery">搜索</el-button>
   </div>
 </template>
@@ -16,7 +16,6 @@ export default {
   },
   data() {
     return {
-      value: '',
       downloadLoading: false,
       pickerOptions2: {
         shortcuts: [{

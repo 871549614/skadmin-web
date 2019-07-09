@@ -40,7 +40,7 @@ export default {
   methods: {
     parseTime,
     beforeInit() {
-      this.url = 'api/logs/user'
+      this.url = 'api/log/user'
       const sort = 'id,desc'
       this.params = { page: this.page, size: this.size, sort: sort }
       return true

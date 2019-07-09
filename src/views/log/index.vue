@@ -46,7 +46,7 @@ export default {
   methods: {
     parseTime,
     beforeInit() {
-      this.url = 'api/logs/operation'
+      this.url = 'api/log/operation'
       const sort = 'id,desc'
       const query = this.query
       const username = query.username
