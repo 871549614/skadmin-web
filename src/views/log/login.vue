@@ -75,7 +75,7 @@ export default {
           date.getSeconds().toString().padStart(2, '0')
       }
 
-      if (daterange && daterange) { this.params['startDate'] = GMTToStr(daterange[0]); this.params['endDate'] = GMTToStr(daterange[1]) }
+      if (daterange && daterange) { this.params['timeRange'] = GMTToStr(daterange[0]) + '|' + GMTToStr(daterange[1]) }
       return true
     }
   }

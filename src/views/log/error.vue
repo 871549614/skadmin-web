@@ -59,10 +59,22 @@ export default {
       const sort = 'id,desc'
       const query = this.query
       const username = query.username
-      const logType = query.logType
+      const daterange = query.daterange
       this.params = { page: this.page, size: this.size, sort: sort }
       if (username && username) { this.params['username'] = username }
-      if (logType !== '' && logType !== null) { this.params['logType'] = logType }
+      /**
+       * @return {string}
+       */
+      function GMTToStr(time) {
+        const date = new Date(time)
+        return date.getFullYear() + '-' +
+          (date.getMonth() + 1).toString().padStart(2, '0') + '-' +
+          date.getDate().toString().padStart(2, '0') + ' ' +
+          date.getHours().toString().padStart(2, '0') + ':' +
+          date.getMinutes().toString().padStart(2, '0') + ':' +
+          date.getSeconds().toString().padStart(2, '0')
+      }
+      if (daterange && daterange) { this.params['timeRange'] = GMTToStr(daterange[0]) + '|' + GMTToStr(daterange[1]) }
       return true
     },
     info(id) {
