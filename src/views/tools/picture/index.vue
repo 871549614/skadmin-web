@@ -83,6 +83,7 @@ export default {
         this.delLoading = false
         this.$refs[id].doClose()
         this.init()
+        this.dleChangePage()
         this.$notify({
           title: '删除成功',
           type: 'success',

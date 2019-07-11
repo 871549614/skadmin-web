@@ -3,7 +3,7 @@
     <el-row :gutter="20">
       <el-col :xs="7" :sm="6" :md="4" :lg="4" :xl="4">
         <div class="head-container">
-          <el-input v-model="deptName" clearable placeholder="输入部门名称搜索" prefix-icon="el-icon-search" style="width: 100%;" class="filter-item" @input="getDeptDatas"/>
+          <el-input v-model="deptName" clearable placeholder="输入部门搜索" prefix-icon="el-icon-search" style="width: 100%;" class="filter-item" @input="getDeptDatas"/>
         </div>
         <el-tree :data="depts" :props="defaultProps" :expand-on-click-node="false" default-expand-all @node-click="handleNodeClick"/>
       </el-col>
@@ -89,6 +89,7 @@ export default {
       this.init()
       // 加载数据字典
       this.getDict('user_status')
+      // this.getDictMap('user_status', 'job_status')
     })
   },
   mounted: function() {
@@ -117,6 +118,7 @@ export default {
       del(id).then(res => {
         this.delLoading = false
         this.$refs[id].doClose()
+        this.dleChangePage()
         this.init()
         this.$notify({
           title: '删除成功',

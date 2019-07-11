@@ -82,6 +82,7 @@ export default {
       del(row.key).then(res => {
         this.delLoading = false
         this.$refs[index].doClose()
+        this.dleChangePage()
         this.init()
         this.$notify({
           title: '删除成功',

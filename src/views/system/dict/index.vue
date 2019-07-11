@@ -107,6 +107,7 @@ export default {
       del(id).then(res => {
         this.delLoading = false
         this.$refs[id].doClose()
+        this.dleChangePage()
         this.init()
         this.$notify({
           title: '删除成功',

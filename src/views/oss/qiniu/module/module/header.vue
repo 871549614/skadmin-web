@@ -15,12 +15,22 @@
     </div>
     <!-- 同步 -->
     <el-button :icon="icon" class="filter-item" size="mini" type="warning" @click="synchronize">{{ buttonName }}</el-button>
+    <!-- 多选删除 -->
+    <el-button
+      v-permission="['ADMIN','PICTURE_ALL','PICTURE_DELETE']"
+      :loading="delLoading"
+      :disabled="$parent.data.length === 0 || $parent.$refs.table.selection.length === 0"
+      class="filter-item"
+      size="mini"
+      type="danger"
+      icon="el-icon-delete"
+      @click="open">删除</el-button>
   </div>
 </template>
 
 <script>
 import eForm from './form'
-import { sync } from '@/api/qiniu'
+import { sync, delAll } from '@/api/qiniu'
 // 查询条件
 export default {
   components: { eForm },
@@ -32,6 +42,7 @@ export default {
   },
   data() {
     return {
+      delLoading: false,
       icon: 'el-icon-refresh',
       buttonName: '同步数据'
     }
@@ -40,6 +51,35 @@ export default {
     toQuery() {
       this.$parent.page = 0
       this.$parent.init()
+    },
+    doDelete() {
+      this.delLoading = true
+      const data = this.$parent.$refs.table.selection
+      const ids = []
+      for (let i = 0; i < data.length; i++) {
+        ids.push(data[i].id)
+      }
+      delAll(ids).then(res => {
+        this.delLoading = false
+        this.$parent.init()
+        this.$notify({
+          title: '删除成功',
+          type: 'success',
+          duration: 2500
+        })
+      }).catch(err => {
+        this.delLoading = false
+        console.log(err.response.data.message)
+      })
+    },
+    open() {
+      this.$confirm('你确定删除选中的数据吗？', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        this.doDelete()
+      })
     },
     synchronize() {
       this.icon = 'el-icon-loading'
