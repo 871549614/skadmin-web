@@ -77,7 +77,7 @@ export default {
       this.doInit()
     },
     beforeInit() {
-      this.url = 'api/jobLogs'
+      this.url = 'api/taskLog'
       const sort = 'id,desc'
       const query = this.query
       const value = query.value

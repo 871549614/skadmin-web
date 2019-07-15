@@ -68,7 +68,7 @@ export default {
     parseTime,
     checkPermission,
     beforeInit() {
-      this.url = 'api/pictures'
+      this.url = 'api/picture'
       const sort = 'id,desc'
       const query = this.query
       const type = query.type

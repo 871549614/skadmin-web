@@ -143,7 +143,7 @@ export default {
       this.$refs.permission.setCheckedKeys([])
       this.$refs.menu.setCheckedKeys([])
       this.showButton = false
-      this.url = 'api/roles'
+      this.url = 'api/role'
       const sort = 'level,asc'
       const query = this.query
       const value = query.value

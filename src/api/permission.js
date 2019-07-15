@@ -3,14 +3,14 @@ import request from '@/utils/request'
 // 获取所有的权限树
 export function getPermissionTree() {
   return request({
-    url: 'api/permissions/tree',
+    url: 'api/permission/tree',
     method: 'get'
   })
 }
 
 export function add(data) {
   return request({
-    url: 'api/permissions',
+    url: 'api/permission',
     method: 'post',
     data
   })
@@ -18,14 +18,14 @@ export function add(data) {
 
 export function del(id) {
   return request({
-    url: 'api/permissions/' + id,
+    url: 'api/permission/' + id,
     method: 'delete'
   })
 }
 
 export function edit(data) {
   return request({
-    url: 'api/permissions',
+    url: 'api/permission',
     method: 'put',
     data
   })
