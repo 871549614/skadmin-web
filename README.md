@@ -1,6 +1,6 @@
 # skadmin-vue
 
-skadmin the source code of front-end
+The source code of front-end
 
 #### The source code of the project
 
