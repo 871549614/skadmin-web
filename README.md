@@ -1,35 +1,36 @@
 # skadmin-vue
 
-skadmin 前端源码
+skadmin the source code of front-end
 
-#### 项目源码
+#### The source code of the project
 
-|     |   后端源码  |   前端源码  |
+|     |   the source code of backend  |   the source code of front-end  |
 |---  |--- | --- |
 |  github   |  https://github.com/DengSinkiang/skadmin   |  https://github.com/DengSinkiang/skadmin-vue   |
 
-#### 前端模板
+#### The front-end template
 
-初始模板基于： [https://github.com/PanJiaChen/vue-admin-template](https://github.com/PanJiaChen/vue-admin-template)
 
-模板文档： [https://panjiachen.github.io/vue-element-admin-site/zh/guide/](https://panjiachen.github.io/vue-element-admin-site/zh/guide/)
+Initial template: [https://github.com/PanJiaChen/vue-admin-template](https://github.com/PanJiaChen/vue-admin-template)
+
+Template document: [https://panjiachen.github.io/vue-element-admin-site/zh/guide/](https://panjiachen.github.io/vue-element-admin-site/zh/guide/)
 
 #### Build Setup
 ``` bash
-# 安装依赖
+# Installation dependency
 npm install
 
-# 启动服务 localhost:8013
+# Start service localhost:8013
 npm run dev
 
-# 构建生产环境(生产环境打包，所以这条命令不用执行)
+# Build production environment (production environment package, so this command does not need to be executed)
 npm run build
 ```
 ```
-# nginx 没有安装nginx请自行百度安装
+# nginx If you have not installed nginx, please install it yourself
 server {
     listen       80;
-    server_name  前端页面 # www.rbac.com;
+    server_name  your url # www.rbac.com;
 
     proxy_set_header X-Forwarded-Host $host;
     proxy_set_header X-Forwarded-Server $host;
@@ -44,7 +45,7 @@ server {
 }
 server {
     listen       80;
-    server_name  api页面 # api.rbac.com;
+    server_name  api url # api.rbac.com;
 
     proxy_set_header X-Forwarded-Host $host;
     proxy_set_header X-Forwarded-Server $host;
@@ -57,6 +58,6 @@ server {
     }
 
 }
-# 修改 prod.env.js
-BASE_API: '"api地址 # http://api.rbac.com"'
+# Edit prod.env.js
+BASE_API: '"api url # http://api.rbac.com"'
 ```
