@@ -15,6 +15,30 @@ export function update(data) {
   })
 }
 
+export function checkOssSet(params) {
+  return request({
+    url: '/setting/oss/check',
+    params,
+    method: 'get'
+  })
+}
+// 获取oss配置
+export function getOssSet(serviceName, params) {
+  return request({
+    url: '/setting/oss/${serviceName}',
+    params,
+    method: 'get'
+  })
+}
+// 编辑oss配置
+export function editOssSet(params) {
+  return request({
+    url: '/setting/oss/set',
+    params,
+    method: 'post'
+  })
+}
+
 export function del(id) {
   return request({
     url: 'api/qiNiuContent/' + id,
